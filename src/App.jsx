@@ -9,23 +9,24 @@ const App = () => {
         console.log(event);
         event.preventDefault()
 
+        //!pass the data in items array on submitting form
         if (formData.course === "" || formData.trainer === "") {
             alert("Kindly Enter the Details!!!")
 
         } else {
             setFormData({
-                ...formData,
+                ...formData, //? prevent the over-riding within "state obj"
             items: [
-                ...formData.items,
+                ...formData.items, //? prevent the over-riding within "item array"
                 {
                     course: formData.course,
                     trainer: formData.trainer,
                     id: formData.id
                 }
             ],
-            course: "",
-            trainer: "",
-            id: uuidv4()
+            course: "", //? converting "course input" back to empty
+            trainer: "", //? converting "trainer input" back to empty
+            id: uuidv4() //? to generate "unique ID" for next data
         })
     }
     
@@ -50,6 +51,17 @@ const App = () => {
         id: uuidv4() // => to generate "unique id" for each set
     })
 
+    //! ************ delete one set of data ************
+    const handleDelete = (delId) => {
+        console.log("Id of item to be deleted", delId);
+        const filterVal = formData.items.filter((val) => {
+            // console.log("within filter current val", val); // obj
+            return val.id !== delId
+        })
+        console.log("remaining val", filterVal); // array
+        setFormData({ ...formData, items: filterVal })
+    }
+
     return (
         <>
             <FormContainer
@@ -58,7 +70,9 @@ const App = () => {
             trainer={formData.trainer}
             handleChange={handleChange}
             />
-            <TodoList items={formData.items} />
+            <TodoList 
+            items={formData.items} 
+            handleDelete={handleDelete} />
         </>
     )
 }

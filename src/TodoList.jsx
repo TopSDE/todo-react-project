@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 const TodoList = (props) => {
     console.log(props);
-    const { items } = props
+    const { items, handleDelete } = props;
 
     return (
         <>
@@ -26,7 +26,9 @@ const TodoList = (props) => {
                                     <td>{val.trainer}</td>
                                     <td>
                                         <button>EDIT</button>
-                                        <button>DELETE</button>
+                                        <button onClick={() => {
+                                            handleDelete(val.id)
+                                        }}>DELETE</button>
                                     </td>
                                 </tr>
                             </Fragment>
