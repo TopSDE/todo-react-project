@@ -51,7 +51,7 @@ const App = () => {
         id: uuidv4() // => to generate "unique id" for each set
     })
 
-    //! ************ delete one set of data ************
+    //! ************ Delete one set of data ************
     const handleDelete = (delId) => {
         console.log("Id of item to be deleted", delId);
         const filterVal = formData.items.filter((val) => {
@@ -62,17 +62,49 @@ const App = () => {
         setFormData({ ...formData, items: filterVal })
     }
 
+    //! ************ Edit one set of data ************
+    const handleEdit = (editId) => {
+        console.log("Id of item to edit", editId);
+
+        //?collect "all remaining values" apart from item to edit
+        const remaingVal = formData.items.filter((val) => {
+        // console.log("current val",val);//obj
+        return val.id !== editId
+        })
+
+        //?finding "particular item" to edit
+        const editItem = formData.items.find((val) => {
+        // console.log("current val",val);//obj
+        return val.id === editId;
+        })
+
+        console.log("Item to edit", editItem);//obj
+        console.log("Remaining val",remaingVal);//array
+
+        setFormData({
+            items: remaingVal,//?storing "all remaining val" to display it on UI
+            course: editItem.course, //* brining "course data" into "course input"
+            trainer: editItem.trainer, //* brining "trainer data" into "trainer input"
+            id:editItem.id //* to store updated data to "same id" point the "same id"
+        });
+        
+    }
+
     return (
         <>
-            <FormContainer
-            handleSubmit={handleSubmit}
-            course={formData.course}
-            trainer={formData.trainer}
-            handleChange={handleChange}
-            />
-            <TodoList 
-            items={formData.items} 
-            handleDelete={handleDelete} />
+            <section id='mainContainer'>
+                <FormContainer
+                handleSubmit={handleSubmit}
+                course={formData.course}
+                trainer={formData.trainer}
+                handleChange={handleChange}
+                />
+                <TodoList 
+                items={formData.items} 
+                handleDelete={handleDelete} 
+                handleEdit={handleEdit}
+                />
+            </section>
         </>
     )
 }

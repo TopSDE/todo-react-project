@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eeeeee;
+    padding: 30px;
+}
+
+#mainContainer {
+    background-color: white;
+    width: 550px;
+    padding: 25px;
+    box-shadow: 1px 1px 10px black;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+.formBlock h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: red;
+    text-decoration: underline;
+}
+
+.formBlock div {
+    margin-bottom: 20px;
+}
+
+.formBlock label {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.formBlock input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.btnBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.btnBlock button {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

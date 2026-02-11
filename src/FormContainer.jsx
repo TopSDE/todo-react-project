@@ -6,7 +6,8 @@ const FormContainer = (props) => {
     
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='formBlock'>
+                <h1>ENTER DETAILS</h1>
                 <div>
                     <label htmlFor='cname'>COURSE </label>
                     <input 
@@ -25,7 +26,9 @@ const FormContainer = (props) => {
                     value={trainer}
                     onChange={handleChange}></input>
                 </div>
-                <button>SUBMIT</button>
+                <div className='btnBlock'>
+                    <button>SUBMIT</button>
+                </div>
             </form>
         </>
     )
